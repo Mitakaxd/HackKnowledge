@@ -1,18 +1,28 @@
 from django.db import models
 
 
-class BaseUser:
-    pass
+class BaseUser(models):
+    user_name = models.CharField(max_length = 30)
+    password = models.CharField(max_length = 20)
+    country = models.CharField(max_length = 20)
+    full_name = models.CharField()
+    email = models.CharField()
+    are_you_business = models.BooleanField()
+    date_of_birth = models.DateTimeField()
 
-class User:
+class User(models):
     pass
 # Create your models here.
 
 
 
-class Business:
+class Business(models):
     pass
 
 
-class Course:
-    pass
+class Course(models):
+    name = models.CharField()
+    company_provider = models.CharField()
+    starting_date = models.DateTimeField()
+    end_time = models.DateTimeField()
+    subject = models.CharField()

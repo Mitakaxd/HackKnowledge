@@ -6,3 +6,4 @@ def home(request):
     
     return HttpResponse('<h1> Welcome </h1>')
 # Create your views here.
+    
