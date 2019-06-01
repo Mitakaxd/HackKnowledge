@@ -5,10 +5,10 @@
 
   <form method='post'>
     {% csrf_token %}
-    {{form}}
+    {{form.as_p}}
     <div> Are you sure</div>
 
-    <input type='submit' name='Create bussiness'/>
+    <input type='submit' name='Login'/>
 
 </form>
 
