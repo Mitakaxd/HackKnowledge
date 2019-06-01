@@ -105,7 +105,6 @@ p {
 #menu a:hover {
   color: #d90075;
 }
-#menu li:after,
 #menu li:before {
   content: '';
   position: absolute;

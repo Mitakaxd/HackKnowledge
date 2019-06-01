@@ -4,7 +4,6 @@ body {
   padding: 20px 80px;
   background: #eee url(https://subtlepatterns.com/patterns/extra_clean_paper.png);
 }
-
 #logo {
   font-family: 'Open Sans', sans-serif;
   color: #555;
@@ -17,8 +16,14 @@ body {
   text-shadow: #EDEDED 3px 2px 0;
   position: relative;
   text-align:left;
-  margin-left: 400px;
+  margin-left: 230px;
+  margin-right: 200px;
+  margin-top: 30px;
 
+}
+img{
+  display: inline;
+  float:left;
 }
 #logo:after {
   content:"PocketJob";
