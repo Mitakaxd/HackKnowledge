@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block page %}
+
+  <form method='post'>
+    {% csrf_token %}
+    {{form}}
+    <div> Are you sure</div>
+
+    <input type='submit' name='Create bussiness'/>
+
+</form>
+
+
+{%endblock%}
