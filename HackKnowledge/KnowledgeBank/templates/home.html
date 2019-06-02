@@ -5,13 +5,14 @@
 	<h1>Welcome to Pocketjob!</h1>
 	<h3>Learn. Perform. Achieve.</h3>
 </div>
-<button class = "button_login", onclick="location.href='/login/'">
-	Login
-</button>
 
+
+{% if user.is_authenticated %}
+<h1> Welcome {{ user.username }}</h1>
+{% else %}
 <button class="button", onclick="location.href='/register/student/'">Learn-lovers,start here.</button>
 <button class="button", onclick="location.href='/register/business/'">Businesses, start here.</button>
-
+{% endif %}
 
 {%endblock %}
 

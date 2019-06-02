@@ -6,12 +6,12 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.mixins import LoginRequiredMixin
 from datetime import datetime
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.models import User
 from django.views import View
 from django.urls import reverse_lazy
 from . import models
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from . import forms
 def home(request):
     
@@ -24,7 +24,12 @@ def about(request):
 
 class LoginBasicView(LoginView):
 	template_name = './login.html'
-	
+
+def logout_view(request):
+	logout(request)
+	return redirect('/')
+
+
 def team(request):
     return render(request,"team.html")
 

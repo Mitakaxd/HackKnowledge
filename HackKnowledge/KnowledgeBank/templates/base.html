@@ -18,10 +18,17 @@
 	  <a href="/" id="logo">PocketJob</a>
 	  
 	  <ul id="menu">
+
 	    <li><a href="/"><span>Home</span></a></li>
 	    <li><a href="/"><span>Courses</span></a></li>
 	    <li><a href="/about"><span>About us</span></a></li>
 	    <li><a href="/team"><span>Team</span></a></li>
+	   	{% if user.is_authenticated %}
+	  	<li><a href="{% url 'logout' %}"<span>Logout</span></a></li>
+	    
+	    {% else %}
+	    <li><a href="/login"><span>Login</span></a></li>
+	  	{% endif %}
 	  </ul>
 	</div>
 	{% block content %}{% endblock %}
