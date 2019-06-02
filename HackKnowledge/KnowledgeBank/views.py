@@ -61,3 +61,16 @@ def student_signup(request):
     else:
         form = forms.StudentSignUpForm()
     return render(request, 'users_register.html', {'form': form})
+
+def all_courses(request):
+    if request.method=='GET':
+        return render(request, 'courses.html', {'courses':models.Course.objects.all()})
+
+# def mycourses(request):
+#     if request.method=='GET':
+#         return render(request,'mycourses.html', {'courses':models.Enrollment})
+#TODO join tables and get only my courses
+#TODO check if logged user is staff, join diff tables
+
+
+#TODO add Course view
