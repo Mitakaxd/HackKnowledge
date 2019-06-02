@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.template import loader
 from django import forms
@@ -11,7 +11,8 @@ from django.contrib.auth.models import User
 from django.views import View
 from django.urls import reverse_lazy
 from . import models
-
+from django.contrib.auth import login, authenticate
+from . import forms
 def home(request):
     
     return render(request,"home.html")
@@ -21,14 +22,37 @@ def home(request):
 def about(request):
     return render(request,"about.html")
 
-class LoginBusinessView(LoginView):
+class LoginBasicView(LoginView):
 	template_name = './login.html'
-
-
+	
 def team(request):
     return render(request,"team.html")
 
 
 
-def users_register(request):
-    return render(request,"users_register.html")
+def business_signup(request):
+    if request.method == 'POST':
+        form = forms.BussinessSignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = forms.BussinessSignUpForm()
+    return render(request, 'users_register.html', {'form': form})
+def student_signup(request):
+    if request.method == 'POST':
+        form = forms.StudentSignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = forms.StudentSignUpForm()
+    return render(request, 'users_register.html', {'form': form})
