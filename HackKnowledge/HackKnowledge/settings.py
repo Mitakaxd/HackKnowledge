@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'KnowledgeBank.apps.KnowledgebankConfig',
     'django.contrib.admin',
