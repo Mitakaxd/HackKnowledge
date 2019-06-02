@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
-
+{% block my_title%}
+<link rel="stylesheet" href="/static/login.css">
+{% endblock %}
 {% block page %}
 
   <form method='post'>
     {% csrf_token %}
     {{form.as_p}}
-    <div> Are you sure</div>
 
-    <input type='submit' name='Login'/>
+    <input type='submit' value='Login'/>
 
-</form>
+  </form>
 
 
 {%endblock%}

@@ -3,42 +3,28 @@
 <html>
 <head>
 	{%block my_title %}
-	{% load static %}
-
+		
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	     
-	    <link rel="stylesheet" href="{% static 'home.css' %}">
+	<link rel="stylesheet" href="/static/home.css">
 	
-		<title>
-			
-		</title>
-		{% endblock %}
+		
+	{% endblock %}
 </head>
 
 <body>
 	<div id="header">
 	  
 	  <a href="/" id="logo">PocketJob</a>
-	  <img src = "https://scontent-sof1-1.xx.fbcdn.net/v/t1.15752-9/61698377_450730918806424_1257645735134887936_n.png?_nc_cat=100&_nc_ht=scontent-sof1-1.xx&oh=a373e62f6249a59895135fa60abb9129&oe=5D8CA703" alt ="logo">
+	  
 	  <ul id="menu">
 	    <li><a href="/"><span>Home</span></a></li>
 	    <li><a href="/"><span>Courses</span></a></li>
 	    <li><a href="/about"><span>About us</span></a></li>
-	    <li><a href="/"><span>Team</span></a></li>
+	    <li><a href="/team"><span>Team</span></a></li>
 	  </ul>
 	</div>
-
-
-	{%block page %}
-	<div id="after_header">
-		<h1>Welcome to Pocketjob!</h1>
-		<h3>Learn. Perform. Achieve.</h3>
-	</div>
-	
-	<button class="button">Learn-lovers,start here.</button>
-	<button class="button">Businesses, start here.</button>
-	{%endblock %}
-
+	{% block content %}{% endblock %}
 
 </body>
 

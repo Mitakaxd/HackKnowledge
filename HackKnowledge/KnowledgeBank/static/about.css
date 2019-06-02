@@ -1,3 +1,4 @@
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
 @import url(https://fonts.googleapis.com/css?family=Squada+One);
 body {
@@ -5,8 +6,21 @@ body {
   background: #eee url(https://subtlepatterns.com/patterns/extra_clean_paper.png);
 }
 
+h3 {
+	text-align: center;
+	color:#555;
+	margin-top: 70px;
+	margin-bottom: 40px;
+	font-size: 50px;
+}
+p {
+	color:#555;
+	font-size:30px;
+	text-align: center;
+}
+
 #logo {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', Sanss-serif;
   color: #555;
   text-decoration: none;
   text-transform: uppercase;
@@ -19,18 +33,6 @@ body {
   text-align:left;
   margin-left: 400px;
 
-}
-h3 {
-	text-align: center;
-	color:#555;
-	margin-top: 70px;
-	margin-bottom: 40px;
-	font-size: 50px;
-}
-p {
-	color:#555;
-	font-size:30px;
-	text-align: center;
 }
 #logo:after {
   content:"PocketJob";
@@ -132,4 +134,3 @@ p {
   font-family: 'Open Sans', sans-serif;
   color: #555;
 }
-

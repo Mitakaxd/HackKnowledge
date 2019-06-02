@@ -1,20 +1,30 @@
 
-
 {% extends "base.html" %}
-{% block my_title %}
+
 {% load static%}
-    <link rel="stylesheet" href="{% static 'users_register.css' %}">
-  {% endblock %}
-{% block page %}
-  
-  <h2>Register Users</h2>
+
+{% block my_title%}
+<link rel="stylesheet" href="/static/users_register.css">
+{% endblock %}
+{% block content %}
+<div class = "Register">
   <form method='post'>
     {% csrf_token %}
     {{form.as_p}}
-    <div> Are you sure</div>
+  <h2>Register Users</h2>
+  
+  First name:<br>
+  <input type="text" name="firstname"><br>
+  Last name:<br>
+  <input type="text" name="lastname"><br>
+  User name:<br>
+  <input type="text" name="username"><br>
+  Password:<br>
+  <input type="password" name="password"><br>
+  Email:<br>
+  <input type="email" name="email"><br>
 
-    <input type='submit' name='Create bussiness'/>
+  </form>
+</div>
 
-</form>
-  <a href = "/">You have already an account?</a>
-  {% endblock %}
+{%endblock%}

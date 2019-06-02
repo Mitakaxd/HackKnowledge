@@ -1,9 +1,11 @@
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
 @import url(https://fonts.googleapis.com/css?family=Squada+One);
 body {
   padding: 20px 80px;
   background: #eee url(https://subtlepatterns.com/patterns/extra_clean_paper.png);
 }
+
 #logo {
   font-family: 'Open Sans', sans-serif;
   color: #555;
@@ -16,14 +18,20 @@ body {
   text-shadow: #EDEDED 3px 2px 0;
   position: relative;
   text-align:left;
-  margin-left: 230px;
-  margin-right: 200px;
-  margin-top: 30px;
+  margin-left: 400px;
 
 }
-img{
-  display: inline;
-  float:left;
+h3 {
+  text-align: center;
+  color:#555;
+  margin-top: 70px;
+  margin-bottom: 40px;
+  font-size: 50px;
+}
+p {
+  color:#555;
+  font-size:30px;
+  text-align: center;
 }
 #logo:after {
   content:"PocketJob";
@@ -32,16 +40,6 @@ img{
   top: 32px;
 }
 
-#button2:{
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
 #logo:after {
   /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;*/
   background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
@@ -108,7 +106,6 @@ img{
 #menu a:hover {
   color: #d90075;
 }
-#menu li:after,
 #menu li:before {
   content: '';
   position: absolute;
@@ -131,12 +128,11 @@ img{
 }
 
 #after_header{
-  margin: 150px;
+  margin: 100px;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   color: #555;
 }
-
 
 .button {
     background-color: #eee;
@@ -146,8 +142,22 @@ img{
     text-decoration: none;
     display: inline-block;
     font-size: 40px;
-    margin: 50px 2px;
+    margin: 10px 2px;
     margin-left: 250px;
 
     cursor: pointer;
+}
+.button_login{
+    background-color: #eee;
+    color: #555;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    margin-left: 760px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
 }

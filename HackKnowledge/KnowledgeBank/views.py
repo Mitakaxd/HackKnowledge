@@ -23,3 +23,12 @@ def about(request):
 
 class LoginBusinessView(LoginView):
 	template_name = './login.html'
+
+
+def team(request):
+    return render(request,"team.html")
+
+
+
+def users_register(request):
+    return render(request,"users_register.html")

@@ -147,6 +147,10 @@ body {
     cursor: pointer;
   }
 
-  .button_login{
-    
-  }
+form{
+    margin-top: 100px;
+    align-content: center;  
+    text-align: center; 
+    font-color:#555;
+
+}
