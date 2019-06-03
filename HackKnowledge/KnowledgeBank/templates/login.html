@@ -3,9 +3,10 @@
 {% block my_title%}
 <link rel="stylesheet" href="/static/login.css">
 {% endblock %}
-{% block content %}
+ {% block content %}
 
   <form method='post'>
+  	<h2>Login Panel</h2>
     {% csrf_token %}
     {{form.as_p}}
 

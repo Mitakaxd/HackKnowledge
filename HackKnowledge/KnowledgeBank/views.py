@@ -33,7 +33,8 @@ def logout_view(request):
 def team(request):
     return render(request,"team.html")
 
-
+def my_profile(request):
+    return render(request,"user_my_profile_page.html")
 
 def business_signup(request):
     if request.method == 'POST':

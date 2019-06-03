@@ -51,7 +51,7 @@ p {
   text-shadow: none;
 }
 #menu {
-  width: 1650px;
+  width: 1700px;
   height: 45px;
   list-style: none;
   margin: 20px 0 0 0; padding: 25px 10px;
@@ -62,7 +62,7 @@ p {
 }
 #menu li {
   display: inline-block;
-  width: 173px;
+  width: 200px;
   margin: 0 10px;
   position: relative;
   -webkit-transform: skewy(-3deg);
@@ -102,22 +102,15 @@ p {
 #menu li:hover {
     width: 203px;
     margin: 0 -5px;
+
 }
 #menu a:hover {
-  color: #d90075;
 }
 #menu li:before {
-  content: '';
-  position: absolute;
-  width: 50px;
-  height: 100%;
-  background: #BBB;
-  -webkit-transform: skewY(8deg);
-  x-index: -3;
-    border-radius: 4px;
+
 }
 #menu li:after {
-    background-image: -webkit-linear-gradient(left, transparent 0%, rgba(0,0,0,.4) 100%);
+  background-image: -webkit-linear-gradient(left, transparent 0%, rgba(0,0,0,.4) 100%);
   right: 0;
   top: -4px; 
 }
@@ -125,6 +118,7 @@ p {
   left: 0;
   bottom: -4px;
     background-image: -webkit-linear-gradient(right, transparent 0%, rgba(0,0,0,.4) 100%);
+
 }
 
 #after_header{
@@ -135,17 +129,17 @@ p {
 }
 
 .button {
-    background-color: #eee;
-    color: #555;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 40px;
-    margin: 10px 2px;
-    margin-left: 250px;
+      background-color: #eee;
+      color: #555;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 40px;
+      margin: 10px 2px;
+      margin-left: 250px;
 
-    cursor: pointer;
+      cursor: pointer;
 }
 .button_login{
     background-color: #eee;
