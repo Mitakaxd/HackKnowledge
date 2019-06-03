@@ -29,13 +29,22 @@ def logout_view(request):
 	logout(request)
 	return redirect('/')
 
+def my_profile(request):
+
+    return render(request,"user_my_profile_page.html")
+
 
 def team(request):
     return render(request,"team.html")
 
-def my_profile(request):
-    return render(request,"user_my_profile_page.html")
 
+def my_profile_overview(request):
+    context = {
+        "username": {{user.first_name}},
+        "email": {{user.email}}    
+
+    }
+    return render(request,"my_profile_overview.html",context)
 def business_signup(request):
     if request.method == 'POST':
         form = forms.BussinessSignUpForm(request.POST)
