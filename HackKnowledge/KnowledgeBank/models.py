@@ -2,28 +2,32 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+import datetime
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birth_date = models.DateField(null=True, blank=True)
     skills = models.TextField(blank=True)
+    def __str__(self):
+        return self.user.full_name
 
 class Business(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    company_name = models.TextField(max_length=30, blank=True)
+    company_name = models.CharField(max_length=30, blank=True)
     projects = models.TextField(max_length=500, blank=True)
     begin_date = models.DateField(null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True)
-
+    def __str__(self):
+        return self.company_name
 
 class Course(models.Model):
-    name = models.TextField(max_length=100, blank=True)
+    name = models.CharField(max_length=100, blank=True,unique=True)
     company_provider = models.ForeignKey(Business, on_delete=models.CASCADE)
     starting_date = models.DateTimeField(null=False, blank=True)
-    end_time = models.DateTimeField(null=False, blank=True)
-    subject = models.TextField(max_length=60, blank=False)
+    subject = models.CharField(max_length=60, blank=False)
     description = models.TextField(max_length=500, blank=True)
+    def __str__(self):
+        return self.name
 
 
 class Enrollment(models.Model):
@@ -33,16 +37,16 @@ class Enrollment(models.Model):
 
 class CourseMaterials(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    week_one_material = models.TextField()
-    week_two_material = models.TextField()
-    week_three_material = models.TextField()
-    week_four_material = models.TextField()
-    week_five_material = models.TextField()
-    week_six_material = models.TextField()
-    week_seven_material = models.TextField()
-    week_eight_material = models.TextField()
-    week_nine_material = models.TextField()
-    week_ten_material = models.TextField()
+    week_one = models.TextField()
+    week_two = models.TextField()
+    week_three = models.TextField()
+    week_four = models.TextField()
+    week_five = models.TextField()
+    week_six = models.TextField()
+    week_seven = models.TextField()
+    week_eight = models.TextField()
+    week_nine = models.TextField()
+    week_ten = models.TextField()
 
 class CourseTests(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)

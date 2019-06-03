@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{course}}
+	{% if user.is_authenticated %}
+	{% if not user.is_staff %}
+	{% if not enrolled %}
+    <form method="POST">
+    	{% csrf_token %}
+
+    	<input type='submit' value='Enroll'/></form>
+
+    	{% endif %}
+	{% else %}
+	<a href='/courses/{{course.id}}/addcontent'>Add Content</a>
+
+	{% endif %}
+	{% endif %}
+{% endblock %}

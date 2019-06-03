@@ -72,3 +72,12 @@ class BussinessSignUpForm(UserCreationForm):
         business = models.Business(user=user, company_name=data['company_name'],
                                    projects=data['projects'], begin_date=data['begin_date'])
         business.save()
+
+class CourseContentForm(forms.ModelForm):
+    class Meta:
+        model = models.CourseMaterials
+        fields = '__all__'
+        exclude = ['course']
+    def save(self):
+        data = self.cleaned_data
+        materials = models.CourseMaterials(course=self.course, **data)

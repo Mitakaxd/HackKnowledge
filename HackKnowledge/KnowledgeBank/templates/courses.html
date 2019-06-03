@@ -5,7 +5,7 @@
 <ol>
 
 {% for course in courses%}
-<li><p>{{    course.name }}, {{course.company_provider}}, {{course.starting_date}}, {{course.end_time}}, {{course.subject}}</p>
+<li><p><a href = '/courses/{{course.id}}'>{{course.name }}</a>, {{course.company_provider}}, {{course.starting_date}}, {{course.end_time}}, {{course.subject}}</p>
 <p>  {{course.description}}</p>
 </li>
 {% endfor %}

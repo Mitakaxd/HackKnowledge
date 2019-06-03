@@ -9,10 +9,11 @@ urlpatterns = [
     path('team/',views.team,name = 'team'),
     path('register/student/',views.student_signup,name = 'regstudent'),	
     path('register/business/',views.business_signup,name = 'regbusiness'),
-    path('login/user_my_profile_page.html/',views.my_profile,name = "profile"),
-    path('my_profile_overview/',views.my_profile_overview,name = "oveview")
+    path('profile/',views.my_profile,name = "profile"),
+    path('profile/overview/',views.my_profile_overview,name = "oveview"),
+    path('mycourses/', views.my_courses, name='mycourses'),
+    path('addcourse/',views.AddCourseView.as_view(),name='addcourse'),
+    path('courses/<int:course_id>', views.course_details,name='course'),
+    path('courses/<int:course_id>/addcontent', views.add_content,name='addcontent')
 
-
-    #path('mycourses/', views.my_courses, name='mycourses'),
-    #path('addcourse/',views.addcourse,name='addcourse')
     ]

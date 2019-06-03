@@ -1,0 +1,15 @@
+{%	extends 'base.html' %}
+
+{% block content %}
+	{% if user.is_authenticated and user.is_staff %}
+  <form method='post'>
+  	<h2>Content:</h2>
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <input type='submit' value='Done'/>
+
+  </form>
+{% endif %}
+
+{%endblock%}
