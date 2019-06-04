@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <h1>
         Welcome, {{user.username}}!
     </h1>
@@ -51,11 +50,6 @@
                     <div class="profile-usermenu">
                         <ul class="nav">
                             <li>
-                                <a href="/profile/overview/">
-                                <i class="glyphicon glyphicon-home"></i>
-                                Overview </a>
-                            </li>
-                            <li>
                                 <a href="#">
                                 <i class="glyphicon glyphicon-user"></i>
                                 Update Info </a>
@@ -73,6 +67,17 @@
             </div>
             <div class="col-md-9">
                 <div class="profile-content">
+                    {% if user.is_staff %}
+                        <p>{{profile.company_name}}</p>
+                        <p>{{profile.projects}}</p>
+                        <p>{{profile.user.email}}</p>
+                    {% else %}
+                        <p>{{profile.user.first_name}}</p>
+                        <p>{{profile.user.last_name}}</p>
+                        <p>{{profile.user.email}}</p>
+                        <p>{{profile.birth_date}}</p>
+                        <p>{{profile.skills}}</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

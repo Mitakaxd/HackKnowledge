@@ -37,27 +37,31 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
-
+@login_required 
 def my_profile(request):
-    return render(request, "user_my_profile_page.html")
+    if request.user.is_staff:
+        user = models.Business.objects.select_related('user').get(user_id=request.user.id)
+    else:
+        user =  models.Student.objects.select_related('user').get(user_id=request.user.id)
+    return render(request, "user_my_profile_page.html",{'profile': user})
 
 
 def team(request):
     return render(request, "team.html")
 
 
-def my_profile_overview(request):
-    if(request.user.is_staff):
-        return
-    else:
-        print(User.objects.all().filter(id=request.user.id))
+# def my_profile_overview(request):
+#     if(request.user.is_staff):
+#         return
+#     else:
+#         print(User.objects.all().filter(id=request.user.id))
 
-    context = {
-        "username": request.user.first_name,
-        "email": request.user.email
+#     context = {
+#         "username": request.user.first_name,
+#         "email": request.user.email
 
-        }
-    return render(request, "my_profile_overview.html", context)
+#         }
+#     return render(request, "my_profile_overview.html", context)
 
 
 def business_signup(request):
@@ -108,7 +112,6 @@ def my_courses(request):
             courses = list(enrollment)
             values = [course['course_id'] for course in courses]
             courses = [models.Course.objects.get(pk=enroll_id) for enroll_id in values]
-            print(list(courses))
         return render(request, 'my_profile_courses.html', {'courses': courses})
     return HttpResponse(status=404)
 

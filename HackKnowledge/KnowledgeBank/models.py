@@ -9,7 +9,7 @@ class Student(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     skills = models.TextField(blank=True)
     def __str__(self):
-        return self.user.full_name
+        return self.user.first_name
 
 class Business(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
