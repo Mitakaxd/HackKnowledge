@@ -1,0 +1,24 @@
+
+
+.buttonHolder{ 
+	background-color: #eee;
+    color: #555;
+    padding: 20px 32px;
+    text-align: center;
+    text-decoration: none;
+    
+    cursor: pointer;
+
+}
+
+
+
+form input[type="submit"] {
+    background-color: #eee;
+    color: #555;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    
+    cursor: pointer;
+}

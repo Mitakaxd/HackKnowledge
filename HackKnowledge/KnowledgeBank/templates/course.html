@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block my_title %}
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	     {% endblock %}
+{% endblock %}
 {% block content %}
-	
+<link rel="stylesheet" href="/static/course.css">
+
 {{content.week_one}}
+<div id = "course">
 {{course}}
+</div>
+
+<div id = "course">
 	{% if user.is_authenticated %}
 	{% if not enrolled and not user.is_staff %}
     <form method="POST">

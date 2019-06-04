@@ -54,12 +54,9 @@ def my_profile_overview(request):
 
     context = {
         "username": request.user.first_name,
-<<<<<<< HEAD
         "email": request.user.email
-=======
-        "email": request.user.email    
->>>>>>> 97c9f163a594ffb2c85299fb90f222f11c0e9e5f
-    }
+
+        }
     return render(request, "my_profile_overview.html", context)
 
 
