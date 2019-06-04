@@ -1,4 +1,9 @@
 
+h2{
+	text-align: center;
+	margin: 50px;
+}
+
 
 .buttonHolder{ 
 	background-color: #eee;
@@ -10,8 +15,6 @@
     cursor: pointer;
 
 }
-
-
 
 form input[type="submit"] {
     background-color: #eee;
