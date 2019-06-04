@@ -63,7 +63,7 @@ p {
 }
 #menu li {
   display: inline-block;
-  width: 173px;
+  width: 200px;
   margin: 0 10px;
   position: relative;
   -webkit-transform: skewy(-3deg);

@@ -25,7 +25,7 @@ class Course(models.Model):
     company_provider = models.ForeignKey(Business, on_delete=models.CASCADE)
     starting_date = models.DateTimeField(null=False, blank=True)
     subject = models.CharField(max_length=60, blank=False)
-    description = models.TextField(max_length=500, blank=True)
+    description = models.CharField(max_length=300, blank=True)
     def __str__(self):
         return self.name
 

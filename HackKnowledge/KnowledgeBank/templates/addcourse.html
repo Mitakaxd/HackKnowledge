@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form method="post">
+ <link rel="stylesheet" href="/static/addcourse.css">
+
+<h1> Add course</h1>
+<form method="post" id = "form">
 	{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Create Course">
+    <div class="buttonHolder">
+
+   		<input style = "text-align: center;" type="submit" value="Create Course">
+   	</div>
+
 </form>
 {% endblock %}
+
+.buttonHolder{ text-align: center; }

@@ -24,6 +24,8 @@
 	    <li><a href="/about"><span>About us</span></a></li>
 	    <li><a href="/team"><span>Team</span></a></li>
 	   	{% if user.is_authenticated %}
+	   		<li><a href="/profile"><span>Profile</span></a></li>
+
 	   		{% if user.is_staff %} 
 	    	<li><a href="/addcourse"><span>Add Course</span></a></li>
 	    	{% endif %}
@@ -32,6 +34,7 @@
 	    {% else %}
 	    	<li><a href="/login"><span>Login</span></a></li>
 	  	{% endif %}
+
 	  </ul>
 	</div>
 	<div id="mybody">
