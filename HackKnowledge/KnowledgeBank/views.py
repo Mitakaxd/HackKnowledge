@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 from django import forms
@@ -14,39 +14,53 @@ from django.contrib.auth.decorators import login_required
 from . import models
 from django.contrib.auth import login, authenticate, logout
 from . import forms
+from . import models
+
 
 def home(request):
-    
-    return render(request,"home.html")
+
+    return render(request, "home.html")
 # Create your views here.
-    
+
 
 def about(request):
-    return render(request,"about.html")
+    return render(request, "about.html")
+
 
 class LoginBasicView(LoginView):
     template_name = './login.html'
     success_url = '/profile'
     next = '/profile'
 
+
 def logout_view(request):
-	logout(request)
-	return redirect('/')
+    logout(request)
+    return redirect('/')
+
 
 def my_profile(request):
-    return render(request,"user_my_profile_page.html")
+    return render(request, "user_my_profile_page.html")
 
 
 def team(request):
-    return render(request,"team.html")
+    return render(request, "team.html")
 
 
 def my_profile_overview(request):
+    if(request.user.is_staff):
+        return
+    else:
+        print(User.objects.all().filter(id=request.user.id))
+
     context = {
         "username": request.user.first_name,
+<<<<<<< HEAD
+        "email": request.user.email
+=======
         "email": request.user.email    
+>>>>>>> 97c9f163a594ffb2c85299fb90f222f11c0e9e5f
     }
-    return render(request,"my_profile_overview.html",context)
+    return render(request, "my_profile_overview.html", context)
 
 
 def business_signup(request):
@@ -62,6 +76,8 @@ def business_signup(request):
     else:
         form = forms.BussinessSignUpForm()
     return render(request, 'users_register.html', {'form': form})
+
+
 def student_signup(request):
     if request.method == 'POST':
         form = forms.StudentSignUpForm(request.POST)
@@ -76,24 +92,25 @@ def student_signup(request):
         form = forms.StudentSignUpForm()
     return render(request, 'users_register.html', {'form': form})
 
-def all_courses(request):
-    if request.method=='GET':
-        return render(request, 'courses.html', {'courses':models.Course.objects.all()})
 
+def all_courses(request):
+    if request.method == 'GET':
+        return render(request, 'courses.html', {'courses': models.Course.objects.all()})
 
 
 @login_required
 def my_courses(request):
-    if request.method=='GET':
+    if request.method == 'GET':
         cur_user = request.user
         if cur_user.is_staff:
-            courses = models.Course.objects.all().select_related('company_provider').filter(company_provider__user=cur_user.pk)
+            courses = models.Course.objects.all().select_related(
+                'company_provider').filter(company_provider__user=cur_user.pk)
         else:
-            courses = models.Enrollment.objects.all().select_related('student','course').filter(student__user=cur_user.pk)
+            courses = models.Enrollment.objects.all().select_related(
+                'student', 'course').filter(student__user=cur_user.pk)
 
-
-        return render(request,'my_profile_courses.html', {'courses':courses})
-    return  HttpResponse(status=404)
+        return render(request, 'my_profile_courses.html', {'courses': courses})
+    return HttpResponse(status=404)
 
 
 class AddCourseView(CreateView):
@@ -103,9 +120,8 @@ class AddCourseView(CreateView):
     success_url = '/profile'
 
 
-
 def course_details(request, course_id):
-    if list(models.Enrollment.objects.all().select_related('student').filter(student__user=request.user.id))==[]:
+    if list(models.Enrollment.objects.all().select_related('student').filter(student__user=request.user.id)) == []:
         enrolled = False
     else:
         enrolled = True
@@ -119,24 +135,27 @@ def course_details(request, course_id):
     course = models.Course.objects.get(id=course_id)
     try:
         content = models.CourseMaterials.objects.all().filter(course=course).values()[0]
+
     except IndexError:
         content = models.CourseMaterials(course=course)
         content.save()
         content = content.__dict__
-    return render(request,'course.html', {'course': course,'enrolled':enrolled, 'content':content})
 
+    return render(request, 'course.html', {'course': course, 'enrolled': enrolled, 'content': content})
 
 
 @login_required
 def add_content(request, course_id):
     if request.method == 'POST':
         if list(models.Course.objects.all().select_related('company_provider').filter(id=course_id, company_provider__user=request.user)) != []:
-            form = forms.CourseContentForm(request.POST)
+            
+            content = models.CourseMaterials.objects.get(course=models.Course.objects.get(pk=course_id))
+            form = forms.CourseContentForm(request.POST,instance=content)
             if form.is_valid():
                 form.course = models.Course.objects.all().filter(id=course_id)[0]
                 form.save()
 
-                return redirect('/courses/'+str(course_id))
+                return redirect('/courses/' + str(course_id))
         else:
             return HttpResponse(status=404)
     else:

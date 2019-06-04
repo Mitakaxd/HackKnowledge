@@ -78,6 +78,8 @@ class CourseContentForm(forms.ModelForm):
         model = models.CourseMaterials
         fields = '__all__'
         exclude = ['course']
-    def save(self):
-        data = self.cleaned_data
-        materials = models.CourseMaterials(course=self.course, **data)
+    # def save(self):
+    #     data = self.cleaned_data
+    #     print(data)
+    #     materials = models.CourseMaterials(course=self.course, **data)
+    #     materials.save()
