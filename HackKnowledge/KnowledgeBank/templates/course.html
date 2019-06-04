@@ -11,12 +11,14 @@
 
 <div id = "course">
 	{% if user.is_authenticated %}
-	{% if not enrolled and not user.is_staff %}
+  {% if not enrolled and not user.is_staff %}
     <form method="POST">
     	{% csrf_token %}
+      
+      <div id = "center">
 
-    	<input type='submit' value='Enroll'/></form>
-
+    	<input id="specialinput" type='submit' value='Enroll'/></form>
+    </div>
 
     	{% else %}
 

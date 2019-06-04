@@ -248,3 +248,19 @@ input:checked + label {
   margin:50px;
 
 }
+#specialinput{
+  display: inline;
+     background-color: #eee;
+    color: #555;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+    cursor: pointer;
+ 
+}
+
+#fix{
+  text-align: center;
+}

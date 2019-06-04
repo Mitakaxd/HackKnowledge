@@ -25,6 +25,7 @@
                 <div class="profile-sidebar">
                     <!-- SIDEBAR USERPIC -->
                             {% if user.is_authenticated %}
+
                                 <h1 style="text-align: right;"> {{ user.username }}</h1>
                             {%endif%}
                                    <!-- END SIDEBAR USERPIC -->
@@ -33,11 +34,12 @@
 
                         <div class="profile-usertitle-job">
                                 {% if user.is_staff %} 
+                                    Business
                                     <li><a href="/addcourse"><span>Add Course</span></a></li>
                                 {% else %}
                                     <div class="profile-usertitle-job">
 
-                                        User</div>
+                                        Student</div>
                                     {% endif %}
                                 
 
@@ -68,15 +70,15 @@
             <div class="col-md-9">
                 <div class="profile-content">
                     {% if user.is_staff %}
-                        <p>{{profile.company_name}}</p>
-                        <p>{{profile.projects}}</p>
-                        <p>{{profile.user.email}}</p>
+                        <p> Company name:{{profile.company_name}}</p>
+                        <p> Projects: {{profile.projects}}</p>
+                        <p> Email:{{profile.user.email}}</p>
                     {% else %}
-                        <p>{{profile.user.first_name}}</p>
-                        <p>{{profile.user.last_name}}</p>
-                        <p>{{profile.user.email}}</p>
-                        <p>{{profile.birth_date}}</p>
-                        <p>{{profile.skills}}</p>
+                        <p>First Name:{{profile.user.first_name}}</p>
+                        <p>Last Name:{{profile.user.last_name}}</p>
+                        <p>Email :{{profile.user.email}}</p>
+                        <p> Birth Date:{{profile.birth_date}}</p>
+                        <p> Skills:{{profile.skills}}</p>
                     {% endif %}
                 </div>
             </div>
