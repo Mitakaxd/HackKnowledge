@@ -103,9 +103,12 @@ def my_courses(request):
             courses = models.Course.objects.all().select_related(
                 'company_provider').filter(company_provider__user=cur_user.pk)
         else:
-            courses = models.Enrollment.objects.all().select_related(
-                'student', 'course').filter(student__user=cur_user.pk)
-
+            enrollment = models.Enrollment.objects.all().select_related(
+                'student', 'course').filter(student__user=cur_user.pk).values()
+            courses = list(enrollment)
+            values = [course['course_id'] for course in courses]
+            courses = [models.Course.objects.get(pk=enroll_id) for enroll_id in values]
+            print(list(courses))
         return render(request, 'my_profile_courses.html', {'courses': courses})
     return HttpResponse(status=404)
 
