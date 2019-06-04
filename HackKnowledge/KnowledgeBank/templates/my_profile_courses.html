@@ -1,17 +1,20 @@
+{% extends 'base.html' %}
 
-{%extends "base.html"%}
 
 {% block content %}
+<link rel="stylesheet" href="/static/addcourse.css">
 
-<ol>
-	
 <h1>{{user.username}} Courses:</h1>
-<ol>
+<ul>
 
 {% for course in courses%}
-<li><p><a href = '/courses/{{course.id}}'>{{course.name }}</a>, {{course.company_provider}}, {{course.starting_date}}, {{course.end_time}}, {{course.subject}}</p>
-<p>  {{course.description}}</p>
+<li><p><a href = '/courses/{{course.id}}'>{{course.name }}</a> - {{course.company_provider}}</p>
+<p> Subject: {{course.subject}}</p>
+<p> Starting Date: {{course.starting_date}} </p>
+<p>  Description:{{course.description}}</p>
+
 </li>
 {% endfor %}
-</ol>
+</ul>
 {%endblock%}
+
