@@ -45,7 +45,6 @@ def my_profile_overview(request):
     context = {
         "username": request.user.first_name,
         "email": request.user.email    
-
     }
     return render(request,"my_profile_overview.html",context)
 
@@ -59,7 +58,7 @@ def business_signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('/')
+            return redirect('/profile/')
     else:
         form = forms.BussinessSignUpForm()
     return render(request, 'users_register.html', {'form': form})
@@ -72,7 +71,7 @@ def student_signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('/')
+            return redirect('/profile/')
     else:
         form = forms.StudentSignUpForm()
     return render(request, 'users_register.html', {'form': form})
@@ -118,10 +117,17 @@ def course_details(request, course_id):
             newly_enrolled.save()
             enrolled = True
     course = models.Course.objects.get(id=course_id)
-    content = models.CourseMaterials.objects.all().filter(course__id=course_id)
+    try:
+        content = models.CourseMaterials.objects.all().filter(course=course).values()[0]
+    except IndexError:
+        content = models.CourseMaterials(course=course)
+        content.save()
+        content = content.__dict__
     return render(request,'course.html', {'course': course,'enrolled':enrolled, 'content':content})
 
 
+
+@login_required
 def add_content(request, course_id):
     if request.method == 'POST':
         if list(models.Course.objects.all().select_related('company_provider').filter(id=course_id, company_provider__user=request.user)) != []:

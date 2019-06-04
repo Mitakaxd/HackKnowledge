@@ -1,17 +1,97 @@
 {% extends 'base.html' %}
-
+{% block my_title %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	     {% endblock %}
 {% block content %}
+	
+{{content.week_one}}
 {{course}}
 	{% if user.is_authenticated %}
-	{% if not user.is_staff %}
-	{% if not enrolled %}
+	{% if not enrolled and not user.is_staff %}
     <form method="POST">
     	{% csrf_token %}
 
     	<input type='submit' value='Enroll'/></form>
 
+
+    	{% else %}
+
+    	<main>
+	    	<input id="tab1" type="radio" name="tabs" checked>
+	  		<label for="tab1">Week01</label>
+
+			<input id="tab2" type="radio" name="tabs">
+			<label for="tab2">Week02</label>
+
+			<input id="tab3" type="radio" name="tabs">
+			<label for="tab3">Week03</label>
+
+		 	<input id="tab4" type="radio" name="tabs">
+		 	<label for="tab4">Week04</label>
+
+		 	<input id="tab5" type="radio" name="tabs">
+		 	<label for="tab5">Week05</label>
+
+		 	<input id="tab6" type="radio" name="tabs">
+		 	<label for="tab6">Week06</label>
+
+		 	<input id="tab7" type="radio" name="tabs">
+		 	<label for="tab7">Week07</label>
+		  
+		 	<input id="tab8" type="radio" name="tabs">
+		 	<label for="tab8">Week08</label>
+
+		 	<input id="tab9" type="radio" name="tabs">
+		 	<label for="tab9">Week09</label>
+
+		 	<input id="tab10" type="radio" name="tabs">
+		 	<label for="tab10">Week10</label>
+
+  <section id="content1">
+    <p>{{content.week_one}}</p>
+  </section>
+
+  <section id="content2">
+ <p>{{content.week_two}}</p>
+  </section>
+
+  <section id="content3">
+    <p>{{content.week_three}}</p>
+  </section>
+
+  <section id="content4">
+    <p>{{content.week_four}}</p>
+  </section>
+    <section id="content5">
+    <p>{{content.week_five}}</p>
+  </section>
+
+  <section id="content6">
+ <p>{{content.week_six}}</p>
+  </section>
+
+  <section id="content7">
+    <p>{{content.week_seven}}</p>
+  </section>
+
+  <section id="content8">
+    <p>{{content.week_eight}}</p>
+  </section>
+
+  <section id="content9">
+    <p>{{content.week_nine}}</p>
+  </section>
+
+  <section id="content10">
+ <p>{{content.week_ten}}</p>
+  </section>
+
+
+
+</main>
     	{% endif %}
-	{% else %}
+	{% if user.is_staff %}
+
 	<a href='/courses/{{course.id}}/addcontent'>Add Content</a>
 
 	{% endif %}
